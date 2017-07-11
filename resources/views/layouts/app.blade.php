@@ -19,7 +19,7 @@
       <div class="container">
         <div class="nav-left">
           <a class="nav-item is-paddingless" href="{{route('home')}}">
-            <img src="{{asset('images/Modern-Round-Logo-Template.png')}}" alt="Template logo">
+            <img src="{{asset('images/logo-example2.jpg')}}" alt="Template logo">
           </a>
           <a class="nav-item is-tab is-hidden-mobile m-l-10">Learn</a>
           <a class="nav-item is-tab is-hidden-mobile">Discuss</a>
@@ -34,9 +34,9 @@
           <a class="nav-item is-tab is-hidden-tablet is-active">Learn</a>
           <a class="nav-item is-tab is-hidden-tablet">Discuss</a>
           <a class="nav-item is-tab is-hidden-tablet">Share</a>
-          @if (!Auth::guest())
-            <a class="nav-item is-tab">Login</a>
-            <a class="nav-item is-tab">Join the Community</a>
+          @if (Auth::guest())
+            <a href="{{route('home')}}" class="nav-item is-tab">Login</a>
+            <a href="{{route('register')}}" class="nav-item is-tab">Join the Community</a>
           @else
             <div class="dropdown">
               <button class="nav-item is-tab dropdown-toggle">
