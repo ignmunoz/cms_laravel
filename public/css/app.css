@@ -13529,6 +13529,7 @@ a.is-muted:hover {
 .dropdown-menu {
   -webkit-box-shadow: 0 0 8px #777;
           box-shadow: 0 0 8px #777;
+  background-color: white;
   display: none;
   left: 0;
   position: absolute;
@@ -14090,5 +14091,13 @@ button.nav-item.is-active {
 
 .p-r-100 {
   padding-right: 100px;
+}
+
+.side-menu {
+  position: fixed;
+  height: 100vh;
+  width: 200px;
+  background-color: white;
+  overflow-y: scroll;
 }
 
