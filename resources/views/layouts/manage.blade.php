@@ -8,24 +8,24 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>CMS Laravel - MANAGEMENT</title>
+    <title>CMS_LARAVEL - MANAGEMENT</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('styles')
 </head>
 <body>
+
     @include('_includes.nav.main')
 
     @include('_includes.nav.manage')
 
     <div class="management-area" id="app">
-        @yield('content')
+      @yield('content')
     </div>
 
-    <!-- Scripts --><!-- Scripts -->
+    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
-
 </body>
 </html>
