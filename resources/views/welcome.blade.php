@@ -14,6 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
         <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css">
 
+
         <!-- Styles -->
         <style>
             html, body {
@@ -83,12 +84,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    CMS_Laravel
+                    DevMarketer.io
                 </div>
             </div>
         </div>
-        
-        <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
 
+        <script src="{{asset('js/app.js')}}" type="text/javascript"></script>
     </body>
 </html>

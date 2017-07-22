@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\User;
 use DB;
 use Session;
 use Hash;
 use Input;
+
 class UserController extends Controller
 {
     /**
@@ -18,6 +21,7 @@ class UserController extends Controller
       $users = User::orderBy('id', 'desc')->paginate(10);
       return view('manage.users.index')->withUsers($users);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -27,6 +31,7 @@ class UserController extends Controller
     {
       return view('manage.users.create');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -39,6 +44,7 @@ class UserController extends Controller
         'name' => 'required|max:255',
         'email' => 'required|email|unique:users'
       ]);
+
       if (!empty($request->password)) {
         $password = trim($request->password);
       } else {
@@ -52,10 +58,12 @@ class UserController extends Controller
         }
         $password = $str;
       }
+
       $user = new User();
       $user->name = $request->name;
       $user->email = $request->email;
       $user->password = Hash::make($password);
+
       if ($user->save()) {
         return redirect()->route('users.show', $user->id);
       } else {
@@ -63,6 +71,7 @@ class UserController extends Controller
         return redirect()->route('users.create');
       }
     }
+
     /**
      * Display the specified resource.
      *
@@ -74,6 +83,7 @@ class UserController extends Controller
       $user = User::findOrFail($id);
       return view("manage.users.show")->withUser($user);
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -85,6 +95,7 @@ class UserController extends Controller
       $user = User::findOrFail($id);
       return view("manage.users.edit")->withUser($user);
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -98,6 +109,7 @@ class UserController extends Controller
         'name' => 'required|max:255',
         'email' => 'required|email|unique:users,email,'.$id
       ]);
+
       $user = User::findOrFail($id);
       $user->name = $request->name;
       $user->email = $request->email;
@@ -113,6 +125,7 @@ class UserController extends Controller
       } elseif ($request->password_options == 'manual') {
         $user->password = Hash::make($request->password);
       }
+
       if ($user->save()) {
         return redirect()->route('users.show', $id);
       } else {
@@ -120,6 +133,7 @@ class UserController extends Controller
         return redirect()->route('users.edit', $id);
       }
     }
+
     /**
      * Remove the specified resource from storage.
      *

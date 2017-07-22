@@ -40,7 +40,7 @@
               <div class="field">
                 <b-radio name="password_options" value="manual">Manually Set New Password</b-radio>
                 <p class="control">
-                  <input type="password" class="input" name="password" id="password" v-if="password_options == 'manual'" placeholder="Manually give a password to this user">
+                  <input type="text" class="input" name="password" id="password" v-if="password_options == 'manual'" placeholder="Manually give a password to this user">
                 </p>
               </div>
             </b-radio-group>
@@ -57,11 +57,13 @@
 
 @section('scripts')
   <script>
+
     var app = new Vue({
       el: '#app',
       data: {
         password_options: 'keep'
       }
     });
+
   </script>
 @endsection
