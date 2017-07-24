@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use DB;
 use Session;
 use Hash;
@@ -80,7 +81,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-      $user = User::findOrFail($id);
+      $user = User::where('id', $id)->with('roles')->first();
       return view("manage.users.show")->withUser($user);
     }
 
@@ -92,8 +93,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-      $user = User::findOrFail($id);
-      return view("manage.users.edit")->withUser($user);
+      $roles = Role::all();
+      $user = User::where('id', $id)->with('roles')->first();
+      return view("manage.users.edit")->withUser($user)->withRoles($roles);
     }
 
     /**
@@ -126,12 +128,17 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
       }
 
-      if ($user->save()) {
-        return redirect()->route('users.show', $id);
-      } else {
-        Session::flash('error', 'There was a problem saving the updated user info to the database. Try again later.');
-        return redirect()->route('users.edit', $id);
-      }
+      $user->save();
+
+      $user->syncRoles(explode(',', $request->roles));
+      return redirect()->route('users.show', $id);
+
+      // if () {
+      //   return redirect()->route('users.show', $id);
+      // } else {
+      //   Session::flash('error', 'There was a problem saving the updated user info to the database. Try again later.');
+      //   return redirect()->route('users.edit', $id);
+      // }
     }
 
     /**

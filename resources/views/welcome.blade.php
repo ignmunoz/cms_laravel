@@ -84,7 +84,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    DevMarketer.io
+                    CMS_LARAVEL
                 </div>
             </div>
         </div>
