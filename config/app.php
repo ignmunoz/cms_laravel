@@ -180,7 +180,7 @@ return [
         /*
          * Third Party Service Providers...
          */
-        Laratrust\LaratrustServiceProvider::class,
+//        Laratrust\LaratrustServiceProvider::class,
 
     ],
 
